@@ -1,0 +1,110 @@
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+
+{#          <!-- user panel (Optional) -->#}
+{#          <div class="user-panel">#}
+{#              <div class="pull-left image">#}
+{#                <img src="avatar3.png" class="img-circle" alt="User Image">#}
+{#              </div>#}
+{#              <div class="pull-left info">#}
+{#                <p>User Name</p>#}
+{##}
+{#                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>#}
+{#              </div>#}
+{#          </div><!-- /.user-panel -->#}
+
+          <!-- Search Form (Optional) -->
+{#          {% if logged_in == True %}#}
+{#          <form action="#" method="get" class="sidebar-form">#}
+{#              <div class="input-group">#}
+{#                <input type="text" name="q" class="form-control" placeholder="Search...">#}
+{#                <span class="input-group-btn">#}
+{#                  <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>#}
+{#                </span>#}
+{#              </div>#}
+{#          </form>#}
+{#          {% endif %}<!-- /.sidebar-form -->#}
+
+          <!-- sidebar menu: : style can be found in sidebar.less -->
+          <ul class="sidebar-menu">
+{#            <li class="header"></li><li class="header"></li>#}
+
+            <li><a href="{{ url_for('root.index') }}">
+{#              <i class="fa fa-dashboard"></i>#}<span>
+              Home
+            </span></a></li>
+
+            {# Settings #}
+{#            <li class="treeview">#}
+{#              <a href="#"><i class="fa fa-cogs"></i> <span>Settings</span> <i class="fa fa-angle-left pull-right"></i></a>#}
+{#              <ul class="treeview-menu">#}
+{##}
+                {# Admin Settings Group #}
+{#                {% if current_user.admin_role == 'basic' or current_user.admin_role == 'super' or current_user.admin_role == 'master' %}#}
+                  {# Personal Settings #}
+{#                  <li class="treeview">#}
+{#                      <a href="#"><i class="fa fa-cog"></i> <span>Personal Settings</span> <i class="fa fa-angle-left pull-right"></i></a>#}
+{#                      <ul class="treeview-menu">#}
+{#                        <li><a href="{{ url_for('root.index') }}"><i class="fa fa-genderless"></i>#}
+{#                          <span>Account</span></a></li>#}
+{#                        {% if app_config_settings['Toggle Placeholders'] == 'true' %}#}
+{#                          <li><a href="{{ url_for('root.index') }}"><i class="fa fa-genderless"></i>#}
+{#                            <span>Profile</span></a></li>#}
+{#                        {% endif %}#}
+{#                      </ul>#}
+{#                  </li>#}
+{##}
+                  {# App Settings #}
+{#                  <li class="treeview">#}
+{#                      <a href="#"><i class="fa fa-cogs"></i> <span>Application Settings</span> <i class="fa fa-angle-left pull-right"></i></a>#}
+{#                      <ul class="treeview-menu">#}
+{#                        <li><a href="{{ url_for('root.index') }}"><i class="fa fa-genderless"></i> <span>User Management</span></a></li>#}
+{#                        <li><a href="{{ url_for('root.index') }}"><i class="fa fa-genderless"></i> <span>App Config</span></a></li>#}
+{#                        <li><a href="{{ url_for('root.index') }}"><i class="fa fa-genderless"></i> <span>Module Settings</span></a></li>#}
+{#                        <li><a href="{{ url_for('root.index') }}"><i class="fa fa-genderless"></i> <span>Gallery</span></a></li>#}
+{#                      </ul>#}
+{#                  </li>#}
+{##}
+                {# User Settings Group #}
+{#                {% else %}#}
+{#                  <li><a href="{{ url_for('root.index') }}"><i class="fa fa-cog"></i> <span>Account</span></a></li>#}
+{#                  <li><a href="{{ url_for('root.index') }}"><i class="fa fa-cog"></i> <span>Profile</span></a></li>#}
+{#                {% endif %}#}
+{##}
+{#              </ul>#}
+{#            </li>#}
+
+
+            {# Modules #}
+{#            {% if logged_in == True %}#}
+{#              <li class="header"></li>#}
+{#            {% endif %}#}
+
+              <li><a href="{{ url_for('xform-test.index') }}"><span>
+                XFormTest
+              </span></a></li>
+              <li><a href="{{ url_for('ppp.index') }}"><span>
+                PPP
+              </span></a></li>
+              <li><a href="{{ url_for('xlsdiff.index') }}"><span>
+                XlsDiff
+              </span></a></li>
+              <li><a href="{{ url_for('borrow.index') }}"><span>
+                Borrow
+              </span></a></li>
+              <li><a href="#"><span>
+                Odk2Stata</span><br/>
+                <span style="font-size: 0.7em;">(coming soon)</span>
+              </a></li>
+              <li><a href="#"><span>
+                QTools</span><br/>
+                <span style="font-size: 0.7em;">(coming soon)</span>
+              </a></li>
+              <li><a href="#"><span>
+                Analytics</span><br/>
+                <span style="font-size: 0.7em;">(coming soon)</span>
+              </a></li>
+
+          </ul>
+        </section>
+        <!-- /.sidebar -->

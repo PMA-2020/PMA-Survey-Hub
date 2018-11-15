@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+
+<!-- Content -->
+{% block body_attribs -%}
+  {{ super() }}
+  ng-app="app" ng-controller="GalleryController as app"
+{%- endblock body_attribs %}
+
+{% block content_header -%}
+  {% include "core_components/content_area/content_header.html" %} <!-- Content: Header -->
+{%- endblock content_header %}
+
+{% block content -%}
+  {{ super() }}
+
+  <h3 class="content-header">{{ page_name }}</h3>
+
+
+  <div class="gallery-container">
+
+    <div ng-repeat="item in app.gallery">
+      <div class="item-container">
+        <i class="{a item.class a}"></i>
+        <p>{a item.description a}</p>
+      </div>
+    </div>
+
+  </div>
+
+{%- endblock content %}
