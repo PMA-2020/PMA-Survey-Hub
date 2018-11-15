@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+
+<!-- Content -->
+{% block content_header -%}
+  {% include "core_components/content_area/content_header.html" %} <!-- Content: Header -->
+{%- endblock content_header %}
+
+{% block content -%}
+{#  <div page-header>#}
+{#    <h4 class="page-header">Customer Relationship Management</h4>#}
+{#  </div>#}
+
+    {# - Use html of super-block template.#}
+    {{ super() }}
+
+  <h3 class="content-header">{{ page_name }}</h3>
+
+  <ol class="breadcrumb">
+    <li>
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#User-Add-Modal">
+          Add New <span class="fa fa-user-plus"></span>
+        </button>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="#" data-toggle="modal" data-target="#User-CSV-Upload-Modal"><span class="fa fa-upload"></span>Upload CSV</a></li>
+        </ul>
+      </div>
+    </li>
+  </ol>
+
+  <div>
+    <table class="table">
+      <tr>
+          <th>#</th>
+          <th>Username</th>
+          <th>E-mail</th>
+          <th>Admin Role</th>
+          <th>Module Roles</th>
+      </tr>
+      {% for user in users %}
+        <tr data-toggle="modal" data-id="{{ user.id }}" data-target="#User-Update-Modal{{ user.id }}">
+          <td>{{ loop.index }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            {% if user.admin_role == 'None' %}Normal User
+            {% elif user.admin_role == 'basic' %}Basic Admin
+            {% elif user.admin_role == 'super' %}Super Admin
+            {% elif user.admin_role == 'master' %}Master Admin
+            {% endif %}
+          </td>
+          <td>{% if user.oms_role != 'None' %}OMS: {{ user.oms_role }} / {% endif %}
+              {% if user.crm_role != 'None' %}CRM: {{ user.crm_role }} / {% endif %}
+              {% if user.hrm_role != 'None' %}HRM: {{ user.hrm_role }} / {% endif %}
+              {% if user.ams_role != 'None' %}AMS: {{ user.ams_role }} / {% endif %}
+              {% if user.mms_role != 'None' %}MMS: {{ user.mms_role }} / {% endif %}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+{%- endblock content %}

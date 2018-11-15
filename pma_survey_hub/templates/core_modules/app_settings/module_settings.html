@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+<!-- Content -->
+{% block content_header -%}
+  {% include "core_components/content_area/content_header.html" %} <!-- Content: Header -->
+{%- endblock content_header %}
+
+{% block content -%}
+    {# - Use html of super-block template.#}
+    {{ super() }}
+
+    {% include "modules/operations/components/oms_settings_form.html" %}
+
+{%- endblock content %}

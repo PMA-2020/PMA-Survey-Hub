@@ -1,0 +1,15 @@
+__pycache__/
+_dev/
+.idea/
+build/
+dev/
+dist/
+env/
+ignored/
+output/
+*~$*
+*.DS_Store
+*.egg-info
+*.swp
+tags
+MANIFEST

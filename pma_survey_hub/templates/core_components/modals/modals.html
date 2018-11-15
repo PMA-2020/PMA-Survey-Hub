@@ -1,0 +1,30 @@
+<!-- Dynamic Modals -->
+{% if modals %}
+  {# Record Add Modals / General Dynamic Modals #}
+  {% include 'core_components/modals/dynamic-modal.base.html' %}
+  {# Record Update Modals #}
+  {% include 'core_components/modals/user-update.html' %}
+  {% include 'core_components/modals/customer-update.html' %}
+  {% include 'core_components/modals/personnel-update.html' %}
+{% endif %}
+
+<!-- CSV Upload Modal -->
+{% include 'core_components/modals/csv-upload.html' %}
+
+<!-- Message Popup Modals -->
+{% include 'core_components/modals/messages.html' %}
+
+<!-- Login & Register Modals -->
+{% if logged_in == False %}
+  {% include 'core_components/modals/login.html' %}
+  {% include 'core_components/modals/register.html' %}
+{% endif %}
+
+{# Development Modals #}
+{# - Note: This modal is within <script> tags and doesn't seem to work if located here. #}
+{# - Link: http://www.dwmkerr.com/the-only-angularjs-modal-service-youll-ever-need/ #}
+{#{% include 'core_components/modals/development-modal.angular.html' %}#}
+{% if customers %}
+  {% include 'modules/crm/components/customer-update-modal.html' %}
+  {% include 'modules/crm/components/customer-delete-modal.html' %}
+{% endif %}

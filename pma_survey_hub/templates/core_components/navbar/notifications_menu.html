@@ -1,0 +1,100 @@
+<!-- Notifications: style can be found in dropdown.less -->
+{#{% set notification_count = 0 %}#}
+{#{% for i in range(notifications|count) %}#}
+{#  {% set notification_count = i + 1 %}#}
+{#{% endfor %}#}
+{#{% for i in range(messages|count) %}#}
+{#  {% set notification_count = i + 1 %}#}
+{#{% endfor %}#}
+
+{% if logged_in %}
+
+    <li class="dropdown notifications-menu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        {% if app_config_settings['Toggle Placeholders'] == 'true' %}
+          <i class="fa fa-warning"></i>
+          <span class="label label-warning">10</span>
+        {% else %}
+          <i class="fa fa-warning"></i>
+          <span class="label label-warning">1</span>
+        {% endif %}
+
+      </a>
+      <ul class="dropdown-menu">
+
+        {% if app_config_settings['Toggle Placeholders'] == 'true' %}
+          <li class="header">Placeholder: "You have <strong>10</strong> notifications."</li>
+        {% else %}
+          <li class="header">You have <strong>1</strong> notifications.</li>
+        {% endif %}
+
+        <li>
+          <ul class="menu">
+            <!-- inner menu: contains the actual data -->
+            {% if notifications %}
+                {% for notification in notifications %}
+                <li>
+                  <a href="#" data-toggle="modal" data-target="#Message{{ notification.id }}">
+                    <i class="fa fa-paper-plane-o info"></i>{{ notification.title }}
+                  </a>
+                </li>
+                {% endfor %}
+            {% endif %}
+            {% if message %}
+                {% for message in messages %}
+                <li>
+                  <a href="#" data-toggle="modal" data-target="#Message{{ message.id }}">
+                    <i class="fa fa-paper-plane-o info"></i>{{ message.title }}
+                  </a>
+                </li>
+                {% endfor %}
+            {% endif %}
+
+          <!-- Placeholder Stuff -->
+          {% if app_config_settings['Toggle Placeholders'] == 'true' %}
+            <li>
+              <a href="#">
+                <i class="fa fa-exclamation-circle info"></i> 5 new members joined today
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-warning danger"></i> Very long description here that may not fit into the page and may cause design problems
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-users warning"></i> 5 new members joined
+              </a>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa fa-exclamation-circle success"></i> 25 sales made
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-exclamation-circle danger"></i> You changed your username
+              </a>
+            </li>
+          {% endif %}
+          </ul>
+        </li>
+        <li class="footer"><a href="#">View all</a></li>
+      </ul>
+    </li>
+
+{% else %}
+
+    <li class="dropdown">
+      <a href="" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-warning"></i>
+        <span class="label label-info">0</span>
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><a href="" data-toggle="modal" data-target="#LoginForm">Log in to view notifications.</a></li>
+      </ul>
+    </li>
+
+{% endif %}
